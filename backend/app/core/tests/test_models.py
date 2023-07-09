@@ -20,7 +20,7 @@ class ModelTests(TestCase):
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
 
-    def test_create_superuser(self):
+    def test_create_superuser_with_email_successful(self):
         """Test creating superuser"""
         email = 'test@example.com'
         password = 'testpass123'
