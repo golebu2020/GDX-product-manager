@@ -1,8 +1,8 @@
 version: '3.9'
 services:
   app:
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
     build:
       context: .
     ports:
@@ -11,21 +11,21 @@ services:
       - "./backend/app:/app"
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
-#     environment:
-#       - DB_HOST=db
-#       - DB_USER=golebu2023-user
-#       - DB_PASSWORD=Nedu123
-#       - DB_NAME=golebu2023-db
+    environment:
+      - DB_HOST=db
+      - DB_USER=golebu2023-user
+      - DB_PASSWORD=Nedu123
+      - DB_NAME=golebu2023-db
 
 
-#   db:
-#     image: postgres:13.11-alpine3.18
-#     volumes:
-#       - postgres-db-data:/var/lib/postgresql/data
-#     environment:
-#       - POSTGRES_USER=golebu2023-user
-#       - POSTGRES_PASSWORD=Nedu123
-#       - POSTGRES_DB=golebu2023-db
+  db:
+    image: postgres:13.11-alpine3.18
+    volumes:
+      - postgres-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=golebu2023-user
+      - POSTGRES_PASSWORD=Nedu123
+      - POSTGRES_DB=golebu2023-db
 
-# volumes:
-#   postgres-db-data:
+volumes:
+  postgres-db-data:
