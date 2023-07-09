@@ -1,8 +1,6 @@
 version: '3.9'
 services:
   app:
-    depends_on:
-      - db
     build:
       context: .
     ports:
@@ -10,22 +8,27 @@ services:
     volumes:
       - "./backend/app:/app"
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py wait_for_db &&
+             python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
-      - DB_USER=golebu2023-user
-      - DB_PASSWORD=Nedu123
-      - DB_NAME=golebu2023-db
-
+      - DB_USER=devuser
+      - DB_PASSWORD=devpassword
+      - DB_NAME=databasename
+    depends_on:
+      - db
 
   db:
-    image:  postgres:13-alpine
+    image: postgres:13-alpine
+
     volumes:
       - postgres-db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=golebu2023user
-      - POSTGRES_PASSWORD=Nedu123
-      - POSTGRES_DB=golebu2023db
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=devpassword
+      - POSTGRES_DB=databasename
 
 volumes:
   postgres-db-data:
