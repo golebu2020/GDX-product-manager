@@ -19,13 +19,13 @@ services:
 
 
   db:
-    image: postgres:13.11-alpine3.18
+    image:  postgres:13-alpine
     volumes:
       - postgres-db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=golebu2023-user
+      - POSTGRES_USER=golebu2023user
       - POSTGRES_PASSWORD=Nedu123
-      - POSTGRES_DB=golebu2023-db
+      - POSTGRES_DB=golebu2023db
 
 volumes:
   postgres-db-data:
