@@ -1,8 +1,8 @@
 version: '3.9'
 services:
   app:
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     build:
       context: .
     ports:
@@ -10,7 +10,7 @@ services:
     volumes:
       - "./backend/app:/app"
     command: >
-      "sh -c python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py runserver 0.0.0.0:8000"
 #     environment:
 #       - DB_HOST=db
 #       - DB_USER=golebu2023-user
