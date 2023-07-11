@@ -8,6 +8,12 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+PRODUCT_CHOICES = [
+    ('small','SMALL'),
+    ('medium','MEDIUM'),
+    ('large','LARGE'),
+]
+
 
 class UserManager(BaseUserManager):
     """Manager for users."""
@@ -39,3 +45,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+
+class Product(models.Model):
+    """Product model design."""
+    name = models.CharField(max_length = 255)
+    ID = models.BigIntegerField(unique=True)
+    description = models.TextField()
+    color = models.CharField(max_length = 255)
+    size = models.CharField(max_length = 255, default='small', choices = PRODUCT_CHOICES)
+
+    def __str__(self):
+        return self.name

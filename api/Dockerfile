@@ -4,9 +4,9 @@ LABEL maintainer="cgolebu@gmail.com"
 
 ENV PYTHONUNBUFFERED 1
 
-COPY backend/requirements.txt /tmp/requirements.txt
+COPY api/requirements.txt /tmp/requirements.txt
 
-COPY backend/app /app
+COPY api/app /app
 
 WORKDIR /app
 
