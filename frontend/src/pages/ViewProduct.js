@@ -1,19 +1,112 @@
 import * as React from 'react';
-import ProductSavedAlert from '../components/ProductSavedAlert';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useNavigate, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 
 const ViewProduct=()=>{
-    const navigate = useNavigate();
-    const handleNavToUpdate = () => {
-        navigate('/update-product'); // Replace '/target-page' with the desired path
-      };
+    const location = useLocation();
+    const { prop} = location.state;
+    console.log(prop)
+
+
+   const [productID, setProductID] = useState(null)
+   const [productName, setProductName] = useState(null)
+   const [productDescription, setProductDescription] = useState(null)
+   const [productColor, setProductColor] = useState(null)
+   const [productSize, setProductSize] = useState(null)
+
+   const [error, setError] = useState(null);
+
+   const navigate = useNavigate();
+   const baseUrl = 'http://127.0.0.1:8000/api/store/product/';
+   const url = baseUrl + prop.toString() + "/";
+
+   /*
+    Getting Specific Product Information from the api
+    */
+
+  useEffect(() => {
+
+    axios.get(url)
+      .then(function (response) {
+        // Request was successful
+        const responseData = response.data;
+        setProductID(responseData["ID"])
+        setProductName((responseData["name"]))
+        setProductDescription(responseData["description"])
+        setProductColor(responseData["color"])
+        setProductSize(responseData["size"])
+
+
+      })
+      .catch(function (error) {
+        // An error occurred
+        setError(error);
+      });
+  });
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!productID) {
+    return <div>Loading...</div>;
+  }
+
+  /*
+  Handle Product Delete
+  */
+  const handleProductDelete = () => {
+
+    axios.delete(url)
+      .then(function (response) {
+        // Item was successfully deleted
+        console.log('Item deleted')
+        console.log('Status Code:', response.status);
+        if (response.status === 204){
+            navigate('/', {state: { successMessage: "Successfully deleted the product"}})
+        }
+
+      })
+      .catch(function (error) {
+        console.log('Status Code:', error.status);
+        navigate('/', {state: { failureMessage: "Something happened, please check your network"}})
+      });
+  };
+
+
+    const handleNavToUpdate = (id) => {
+        axios.get(url)
+            .then(function (response) {
+                // Request was successful
+                const responseData = response.data;
+                navigate('/update-product',
+                    { state:
+                        {
+                            prop1: id,
+                            prop2: responseData['ID'],
+                            prop3: responseData['name'],
+                            prop4: responseData['description'],
+                            prop5: responseData['color'],
+                            prop6: responseData['size'],
+
+                        }
+                    }
+                );
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+
+    };
+
   return (
     <div >
-        <ProductSavedAlert/>
         <li style={{'marginTop':'1.5rem'}}><Link to="/">Home</Link></li>
         <div className='view-product-container'>
 
@@ -22,33 +115,34 @@ const ViewProduct=()=>{
                     <h2 style={{'marginBottom':'1rem'}}>Product Details</h2>
                     <hr style={{'opacity':'0.10', 'marginTop':"0.5rem"}} />
 
-                    <h4 style={{'marginTop':'1rem'}}>Product ID</h4>
+                    <h4 style={{'marginTop':'1rem'}}>ID</h4>
                     <br />
-                    <p>4567456789</p>
+                    <p>{productID}</p>
                     <hr style={{'opacity':'0.10', 'marginTop':"0.5rem"}} />
 
-                    <h4 style={{'marginTop':'1rem'}}>Product Name</h4>
+                    <h4 style={{'marginTop':'1rem'}}>Name</h4>
                     <br />
-                    <p>Milk</p>
+                    <p>{productName}</p>
                     <hr style={{'opacity':'0.10', 'marginTop':"0.5rem"}} />
 
-                    <h4 style={{'marginTop':'1rem'}}>Product Description</h4>
+                    <h4 style={{'marginTop':'1rem'}}>Description</h4>
                     <br />
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu</p>
+
+                    <p>{productDescription}</p>
                     <hr style={{'opacity':'0.10', 'marginTop':"0.5rem"}} />
 
-                    <h4 style={{'marginTop':'1rem'}}>Product Color</h4>
+                    <h4 style={{'marginTop':'1rem'}}>Color</h4>
                     <br />
-                    <p>Red</p>
+                    <p>{productColor}</p>
                     <hr style={{'opacity':'0.10', 'marginTop':"0.5rem"}} />
 
-                    <h4 style={{'marginTop':'1rem'}}>Product Size</h4>
+                    <h4 style={{'marginTop':'1rem'}}>Size</h4>
                     <br />
-                    <p>Medium</p>
+                    <p>{productSize}</p>
                     <hr style={{'opacity':'0.10', 'marginTop':"0.5rem", 'marginBottom':'1rem'}} />
                     <ButtonGroup className='btn-group-class' variant="contained" aria-label="outlined primary button group">
-                        <Button onClick={handleNavToUpdate} className='btn-delete-update'>Update</Button>
-                        <Button className='btn-delete-update color' color="error">Delete</Button>
+                        <Button onClick={()=>handleNavToUpdate(prop)} className='btn-delete-update'>Update</Button>
+                        <Button onClick={handleProductDelete} className='btn-delete-update color' color="error">Delete</Button>
                     </ButtonGroup>
 
                 </div>

@@ -1,3 +1,8 @@
+/*
+    This Section defines the css styles for each of the page
+*/
+
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 .form-container{
         display: flex;
@@ -80,4 +85,3 @@
 .view-product-table{
     box-shadow: none;
 }
-

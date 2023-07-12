@@ -1,3 +1,7 @@
+/*
+    This section defines the overall layout of the root of the app
+
+*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 *{
     padding: 0;
@@ -23,4 +27,3 @@ body {
     outline: none;
     box-shadow: 0 0 0 0.8rem hwb(28 51% 11% / 0.495);
 }
-

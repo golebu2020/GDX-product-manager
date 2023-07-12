@@ -12,11 +12,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'ID', 'name']
+        fields = ['id', 'ID', 'name', 'description', 'color', 'size']
         read_only_fields = ['id']
 
 class ProductDetailSerializer(ProductSerializer):
     """Serializer for product detail view."""
 
     class Meta(ProductSerializer.Meta):
-        fields = ProductSerializer.Meta.fields + ['description', 'color', 'size']
+        fields = ProductSerializer.Meta.fields

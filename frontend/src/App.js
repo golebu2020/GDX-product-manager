@@ -8,6 +8,13 @@ import AddProduct from './pages/AddProduct';
 import UpdateProduct from './pages/UpdateProduct';
 import ViewProduct from './pages/ViewProduct';
 
+/*
+  Defining the different paths of the app:
+    - Home Page: http://localhost:3000/
+    - Add Product: http://localhost:3000/add-product
+    - Update Product: http://localhost:3000/update-product
+    - View Product: http://localhost:3000/view-product
+*/
 
 function App() {
   return (
