@@ -75,6 +75,12 @@ The Store App is a full-stack application designed to facilitate the management 
 ###
     http://127.0.0.1:8000/admin/
 - Provide your information and have access to the models created while developing the backend
+- Note: After stoppign the entire application using docker-compose, you can clean up your system and delete images by running the command:
+###
+    docker -rmi -f $(docker images -aq)
+- You can also delete container by doing:
+###
+    docker rm -vf $(docker ps -aq)
 
 
 ## Additional Information
