@@ -57,7 +57,7 @@ The Store App is a full-stack application designed to facilitate the management 
     http://127.0.0.1:8000/api/docs/
 - The frontend application can be access by going to the link on your browswer:
 ###
-    http://localhost:3000/
+    http://127.0.0.1:3000/ or http://localhost:3000/
 - At this point youc an make use of the application without being authorized
 - You can also view all the running containers (api, frontend, and postgresQL database) using the command:
 ###
@@ -81,6 +81,10 @@ The Store App is a full-stack application designed to facilitate the management 
 - You can also delete container by doing:
 ###
     docker rm -vf $(docker ps -aq)
+
+## Note
+
+- Click on the Table Items themselves to carryout actions such as (Delete Product and Update Product)
 
 
 ## Additional Information
