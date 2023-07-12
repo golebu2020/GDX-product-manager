@@ -36,9 +36,9 @@ The Store App is a full-stack application designed to facilitate the management 
 - `Axios: axios@1.4.0`
 
 ## Installation Instruction/Instruction for Use
-- Download the project folder (`GDX-product-manager`)
-- Ensure that you have VSCode installed in your local machine
-- Navigate to the project folder and open the folder in VSCode editor by executing the command:
+### Download the project folder (`GDX-product-manager`)
+### Ensure that you have VSCode installed in your local machine
+### Navigate to the project folder and open the folder in VSCode editor by executing the command:
     code .
 
 
