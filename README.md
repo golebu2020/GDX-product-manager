@@ -1,4 +1,4 @@
-# Title of the Full-Stack App
+# GDX Product Manager
 
 ## Fullstack Overview
 
@@ -17,12 +17,7 @@ The Store App is a full-stack application designed to facilitate the management 
 - View All Products: Offers a comprehensive listing of all available products in the store. Users can browse through the product catalog, view essential details.
 
 ## Frameworks Used
-django<=3.2.4,<3.3
-djangorestframework<=3.12.4,<3.13
-flake8>=3.9.2,<=3.10
-psycopg2>=2.8.6,<2.9
-drf-spectacular>=0.21.1,<0.23
-django-cors-headers
+
 ### Backend
 
 - `django<=3.2.4,<3.3`
@@ -31,6 +26,22 @@ django-cors-headers
 - `psycopg2>=2.8.6,<2.9`
 - `drf-spectacular>=0.21.1,<0.23`
 - `django-cors-headers`
+
+### Frontend
+
+- `NPM 9.6.5`
+- `Node V20.3.1`
+- `react-router-dom@6.14.1`
+- `Material UI: @mui/material@5.14.0`
+- `Axios: axios@1.4.0`
+
+## Installation Instruction/Instruction for Use
+- Download the project folder (`GDX-product-manager`)
+- Ensure that you have VSCode installed in your local machine
+- Navigate to the project folder and open the folder in VSCode editor by executing the command:
+    code .
+
+
 
 Describe the feature's purpose and functionality.
 Explain the user flow and any specific requirements.
