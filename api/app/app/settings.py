@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'core',
     'store',
     'rest_framework',
-    'rest_framework.authtoken',
+    # 'rest_framework.authtoken',
     'drf_spectacular',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',  # Replace with the origin of your React app
 ]
 
 ROOT_URLCONF = 'app.urls'

@@ -20,9 +20,17 @@ services:
     depends_on:
       - db
 
+  frontend-app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+    volumes:
+    - "./frontend:/code"
+
   db:
     image: postgres:13-alpine
-
     volumes:
       - postgres-db-data:/var/lib/postgresql/data
     environment:
