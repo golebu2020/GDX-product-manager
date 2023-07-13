@@ -41,7 +41,7 @@ The Store App is a full-stack application designed to facilitate the management 
 - Docker Compose version v2.15.1
 
 ## Installation Instruction/Instruction for Use
-- Download the project folder (`GDX-product-manager`)
+- Download the project folder (`GDX-product-manager`) or download all the project files and copy them into a folder created as `GDX-product-manager` or any name of your choice
 - Ensure that you have VSCode installed in your local machine
 - Navigate to the project folder and open the folder in VSCode editor by executing the command:
 ###
