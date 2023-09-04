@@ -1,13 +1,14 @@
 version: '3.9'
 services:
   app:
+    image: "product_manager-api:${TAG}"
     build:
       context: .
       dockerfile: ./api/Dockerfile
     ports:
-      - "8000:8000"
+      - 8000:8000
     volumes:
-      - "./api/app:/app"
+      - api-volume:/app
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
@@ -20,14 +21,15 @@ services:
     depends_on:
       - db
 
-  frontend-app:
+  ui:
+    image: "product_manager-ui:${TAG}"
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./frontend/Dockerfile
     ports:
       - 3000:80
     volumes:
-    - "./frontend:/code"
+      - ui-volume:/code
 
   db:
     image: postgres:13-alpine
@@ -40,3 +42,5 @@ services:
 
 volumes:
   postgres-db-data:
+  api-volume:
+  ui-volume:

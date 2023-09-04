@@ -1,3 +1,7 @@
+#!/usr/bin/env groovy
+
+
+def gv
 pipeline{
     agent any
     
@@ -6,22 +10,16 @@ pipeline{
             steps{
                 script{
                     echo "Initialization..."
+                    gv = load('script.groovy')
                 }
             }
         }
 
-        stage('test'){
+        stage('test and build'){
             steps{
                 script{
                     echo "Testing..."
-                }
-            }
-        }
-
-        stage('build'){
-            steps{
-                script{
-                    echo "Building..."
+                    gv.testBuild()
                 }
             }
         }
