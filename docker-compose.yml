@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 services:
   app:
     build:
@@ -27,7 +27,7 @@ services:
     ports:
       - 3000:80
     volumes:
-    - "./frontend:/code"
+      - "./frontend:/code"
 
   db:
     image: postgres:13-alpine
