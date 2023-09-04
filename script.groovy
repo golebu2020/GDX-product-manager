@@ -12,7 +12,7 @@ def increment(){
     patch = matcher[2]
 
     echo "Major: ${major}, Minor: ${minor}, Patch: ${patch}"
-    // sh "bash ./test_build.sh ${major}.${minor}.${patch}"
+    sh "bash ./test_build.sh ${major}.${minor}.${patch}"
     
 }
 
