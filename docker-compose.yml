@@ -6,10 +6,8 @@ services:
     build:
       context: .
       dockerfile: ./api/Dockerfile
-      args:
-        - TAG=1.0.0
     ports:
-      - 8000:8000
+      - 8083:8000
     volumes:
       - app_volume:/app
     command: >
@@ -30,10 +28,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      args:
-        - TAG=1.0.0
     ports:
-      - 3000:80
+      - 8084:80
     volumes:
       - ui_volume:/code
 
