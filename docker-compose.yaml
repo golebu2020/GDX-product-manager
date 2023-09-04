@@ -20,14 +20,14 @@ services:
     depends_on:
       - db
 
-  frontend-app:
+  frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 3000:80
+      - "8080:80"
     volumes:
-      - "./frontend:/code"
+      - "./frontend:/app"
 
   db:
     image: postgres:13-alpine
