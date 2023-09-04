@@ -5,8 +5,8 @@ def testBuild(){
 }
 
 def increment(){
-    def jenkins_workspace = readFile("${env.WORSPACE}/version.xml")
-    matcher = jenkins_workspace.split(".")
+    def file = readFile("${env.WORKSPACE}/version.xml")
+    def matcher = file.split(".")
     major = matcher[0]
     minor = matcher[1]
     patch = matcher[2]
