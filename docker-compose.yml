@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   app:
-    image: product_manager_api
+    image: "product_manager_api:${TAG}"
     container_name: product_manager_api_cont
     build:
       context: .
@@ -25,7 +25,7 @@ services:
       - db
 
   ui:
-    image: product_manager_ui
+    image: "product_manager_ui:${TAG}"
     container_name: product_manager_ui_cont
     build:
       context: ./frontend

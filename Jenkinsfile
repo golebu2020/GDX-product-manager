@@ -2,8 +2,13 @@
 
 
 def gv
+def major, minor, patch
+
 pipeline{
     agent any
+    environment{
+        WORKSPACE=pwd()
+    }
     
     stages{
         stage('init'){
@@ -24,10 +29,30 @@ pipeline{
             }
         }
 
+        stage("push image"){
+            steps{
+                script{
+                    echo "Pushing image to registry..."
+                    // gv.pushImage()
+
+                }
+            }
+        }
+
         stage('deploy'){
             steps{
                 script{
                     echo "deploying..."
+                    // gv.deploy()
+                }
+            }
+        }
+
+        stage("push commit"){
+            steps{
+                script{
+                    echo "updating version patch..."
+                    // gv.updateCommitInfo()
                 }
             }
         }
