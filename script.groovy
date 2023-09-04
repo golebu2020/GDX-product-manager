@@ -17,8 +17,7 @@ def increment(){
 }
 
 def pushImage(){
-
-
+    
 }
 
 def deploy(){
