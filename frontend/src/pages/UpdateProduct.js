@@ -48,7 +48,7 @@ const UpdateProduct=()=>{
 
     console.log(`this is the prop:${prop1}`)
 
-    const baseUrl = 'http://127.0.0.1:8000/api/store/product/';
+    const baseUrl = 'http://165.232.147.254:8083/api/store/product/';
     const url = baseUrl + prop1.toString() + "/";
 
 

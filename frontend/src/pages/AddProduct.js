@@ -9,7 +9,7 @@ import { useNavigate, Link} from 'react-router-dom';
 
 const AddProduct=()=>{
 
-    const url = 'http://127.0.0.1:8000/api/store/product/';
+    const url = 'http://165.232.147.254:8083/api/store/product/';
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({

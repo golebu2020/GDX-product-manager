@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-vp9dcnf2&x_3@!5zh!u52^t40=*a(m@gr!6f+=a9zjlmz_4rfp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["165.232.147.254"]
 
 
 # Application definition
@@ -59,9 +59,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-      # Replace with the origin of your React app
+    'http://165.232.147.254:8084',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -93,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get("DB_HOST"),
         'NAME': os.environ.get("DB_NAME"),
-        'USER':os.environ.get("DB_USER"),
+        'USER': os.environ.get("DB_USER"),
         'PASSWORD': os.environ.get("DB_PASSWORD"),
     }
 }

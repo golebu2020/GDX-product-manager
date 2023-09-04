@@ -94,7 +94,7 @@ export default function ViewProducts() {
   const [open, setOpen] = React.useState(true);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/store/product/')
+    axios.get('http://165.232.147.254:8083/api/store/product/')
       .then(function (response) {
         // Request was successful
 
