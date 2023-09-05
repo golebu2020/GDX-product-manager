@@ -2,7 +2,10 @@
 
 
 def gv
-def major, minor, patch, TAG
+def major
+def minor
+def patch
+def TAG
 
 pipeline{
     agent any
