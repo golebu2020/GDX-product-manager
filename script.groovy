@@ -31,9 +31,10 @@ def pushImage(){
 
 def deploy(){
     def deployTag = "${major}.${minor}.${patch}"
+    def runApp = "bash ./PM-deploy.sh ${deployTag}"
     sshagent(['deploy-key']){
         sh "scp -o StrictHostKeyChecking=no PM-deploy.sh PM-docker-compose-prod.yaml root@165.232.147.254:/root"
-        sh "bash ./PM-deploy.sh ${deployTag}"
+        sh "${REMOTE_ACCESS} ${runApp}"
     }
 
 }
