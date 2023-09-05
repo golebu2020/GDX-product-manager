@@ -19,10 +19,11 @@ def increment(){
 def pushImage(){
     withCredentials([usernamePassword(credentialsId:'dockerhub-credentials', usernameVariable:'USER', passwordVariable:'PASS')]){
         sh "echo ${PASS} | docker login --username ${USER} --password-stdin"
-        sh "docker tag pmapp-image:${TAG} golebu2023/image-registry:tagName1"
-        sh "docker tag pmui-image:${TAG} golebu2023/image-registry:tagName2"
-        sh "docker push ${env.REG}:pmapp-image-${TAG}"
-        sh "docker push ${env.REG}:pmui-image-${TAG}"
+        sh "docker tag pmapp-image:1.0.0 golebu2023/image-registry:pmapp-image-1.0.0"
+        sh "docker tag pmui-image:1.0.0 golebu2023/image-registry:pmui-image-1.0.0"
+        sh "docker push golebu2023/image-registry:pmapp-image-1.0.0"
+        sh "docker push golebu2023/image-registry:pmui-image-1.0.0"
+
     }
 }
 
