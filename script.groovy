@@ -36,7 +36,6 @@ def deploy(){
         sh "scp -o StrictHostKeyChecking=no PM-deploy.sh PM-docker-compose-prod.yaml root@165.232.147.254:/root"
         sh "ssh -o StrictHostKeyChecking=no root@165.232.147.254 bash ./PM-deploy.sh ${deployTag}"
     }
-
 }
 
 def updateCommitInfo(){
