@@ -21,8 +21,8 @@ def pushImage(){
         sh "echo ${PASS} | docker login --username ${USER} --password-stdin"
         sh "docker tag pmapp-image:1.0.0 ${env.REG}:pmapp-image-1.0.0"
         sh "docker tag pmui-image:1.0.0 ${env.REG}:pmui-image-1.0.0"
-        sh "docker ${env.REG}:pmapp-image-1.0.0"
-        sh "docker ${env.REG}:pmui-image-1.0.0"
+        sh "docker push ${env.REG}:pmapp-image-1.0.0"
+        sh "docker push ${env.REG}:pmui-image-1.0.0"
 
     }
 }
