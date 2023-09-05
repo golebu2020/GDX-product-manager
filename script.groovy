@@ -23,8 +23,7 @@ def pushImage(){
         sh "docker tag ${env.apiImage}:latest ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.apiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.uiImage}-${TAG}"
-        sh "docker image prune -a -f"
-        echo "My tage is ${TAG}"
+        sh "docker rmi -f pmapp_image:latest pmui_image:latest"
     }
 }
 
