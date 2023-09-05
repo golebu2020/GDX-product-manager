@@ -23,7 +23,7 @@ def pushImage(){
         sh "docker tag ${env.uiImage}:1.0.0 ${env.REG}:${env.uiImage}-1.0.0"
         sh "docker push ${env.REG}:${env.apiImage}-1.0.0"
         sh "docker push ${env.REG}:${env.uiImage}-1.0.0"
-        sh "docker rmi ${env.apiImage}:1.0.0 ${env.uiImage}:1.0.0 ${env.REG}:${env.apiImage}-1.0.0 ${env.REG}:${env.uiImage}-1.0.0"
+        sh "docker image prune -a -f"
     }
 }
 
