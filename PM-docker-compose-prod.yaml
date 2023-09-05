@@ -16,7 +16,7 @@ services:
       - DB_PASSWORD=devpassword
       - DB_NAME=databasename
     depends_on:
-      - pmdb
+      - db
 
   pmui:
     image: "golebu2023/image-registry:pmui_image-${TAG}"
@@ -25,9 +25,8 @@ services:
     volumes:
       - pmui_vol:/app
 
-  pmdb:
+  db:
     image: postgres:13-alpine
-    container_name: postgres_pm
     volumes:
       - postgres-db-data:/var/lib/postgresql/data
     environment:
