@@ -11,9 +11,9 @@ def increment(){
     minor = matcher[1]
     patch = matcher[2]
 
-    echo "Major: ${major}, Minor: ${minor}, Patch: ${patch}"
-    sh "bash ./test_build.sh ${major}.${minor}.${patch}"
     TAG = "${major}.${minor}.${patch}"
+    sh "bash ./test_build.sh ${TAG}"
+    
 }
  
 def pushImage(){
