@@ -1,14 +1,15 @@
-version: '3.9'
+version: '3.3'
 services:
   pmapp:
-    # image: "product_manager_api:${TAG}"
+    image: "pmapp-image:1.0.0"
+    container_name: "pmapp-container"
     build:
       context: .
       dockerfile: ./api/Dockerfile
     ports:
       - 8083:8000
     volumes:
-      - product_manager_app_volume:/app
+      - pmapp_vol:/app
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
@@ -19,19 +20,20 @@ services:
       - DB_PASSWORD=devpassword
       - DB_NAME=databasename
     depends_on:
-      - db
+      - pmdb
 
   pmui:
-    # image: "product_manager_ui:${TAG}"
+    image: "pmui-image:1.0.0"
+    container_name: "pmui-container"
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - 8084:80
     volumes:
-      - product_manager_ui_volume:/code
+      - pmui_vol:/code
 
-  db:
+  pmdb:
     image: postgres:13-alpine
     volumes:
       - postgres-db-data:/var/lib/postgresql/data
@@ -42,5 +44,5 @@ services:
 
 volumes:
   postgres-db-data:
-  product_manager_app_volume:
-  product_manager_ui_volume:
+  pmapp_vol:
+  pmui_vol:
