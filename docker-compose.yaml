@@ -2,8 +2,6 @@ version: '3.3'
 services:
   pmapp:
     image: "pmapp-image:${TAG}"
-    # image: "pmapp-image:1.0.0"
-    container_name: "pmapp-container"
     build:
       context: .
       dockerfile: ./api/Dockerfile
@@ -25,15 +23,13 @@ services:
 
   pmui:
     image: "pmui-image:${TAG}"
-    # image: "pmui-image:1.0.0"
-    container_name: "pmui-container"
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - 8082:80
     volumes:
-      - pmui_vol:/code
+      - pmui_vol:/app
 
   pmdb:
     image: postgres:13-alpine
