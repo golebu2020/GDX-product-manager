@@ -19,8 +19,8 @@ def increment(){
 def pushImage(){
     withCredentials([usernamePassword(credentialsId:'dockerhub-credentials', usernameVariable:'USER', passwordVariable:'PASS')]){
         sh "echo ${PASS} | docker login --username ${USER} --password-stdin"
-        sh "docker tag ${env.apiImage}:1.0.0 ${env.REG}:${env.apiImage}-${TAG}"
-        sh "docker tag ${env.uiImage}:1.0.0 ${env.REG}:${env.uiImage}-${TAG}"
+        sh "docker tag ${env.apiImage}:${TAG} ${env.REG}:${env.apiImage}-${TAG}"
+        sh "docker tag ${env.uiImage}:${TAG} ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.apiImage}-1.0.0"
         sh "docker push ${env.REG}:${env.uiImage}-1.0.0"
         sh "docker image prune -a -f"
