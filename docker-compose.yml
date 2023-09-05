@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  product_manager_app:
+  pmapp:
     # image: "product_manager_api:${TAG}"
     build:
       context: .
@@ -21,7 +21,7 @@ services:
     depends_on:
       - db
 
-  product_manager_ui:
+  pmui:
     # image: "product_manager_ui:${TAG}"
     build:
       context: ./frontend
