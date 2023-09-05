@@ -23,7 +23,7 @@ def pushImage(){
         sh "docker tag ${env.uiImage}:${TAG} ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.apiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.uiImage}-${TAG}"
-        sh "docker rmi -f \$(docker images -aq)"
+
     }
 }
 
