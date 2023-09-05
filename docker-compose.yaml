@@ -14,7 +14,7 @@ services:
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     env_file:
-      - ./.env_prod
+      - ./.env.prod
     depends_on:
       - db
 
@@ -33,7 +33,7 @@ services:
     volumes:
       - postgres-db-data:/var/lib/postgresql/data
     env_file:
-      - ./.env_prod
+      - ./.env.prod
 
 volumes:
   postgres-db-data:
