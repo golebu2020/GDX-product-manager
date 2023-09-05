@@ -2,9 +2,6 @@ version: '3.9'
 services:
   pmapp:
     image: "golebu2023/image-registry:pmapi_image-${TAG}"
-    build:
-      context: .
-      dockerfile: ./api/Dockerfile
     ports:
       - 8083:8000
     volumes:
@@ -23,9 +20,6 @@ services:
 
   pmui:
     image: "golebu2023/image-registry:pmui_image-${TAG}"
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
     ports:
       - 8084:80
     volumes:
