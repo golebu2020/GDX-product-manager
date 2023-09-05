@@ -33,7 +33,7 @@ def deploy(){
     def deployTag = "${major}.${minor}.${patch}"
     def runApp = "bash ./PM-deploy.sh ${deployTag}"
     sshagent(['deploy-key']){
-        sh "scp -o StrictHostKeyChecking=no PM-deploy.sh PM-docker-compose-prod.yaml.env.prod root@165.232.147.254:/root"
+        sh "scp -o StrictHostKeyChecking=no PM-deploy.sh PM-docker-compose-prod.yaml .env.prod root@165.232.147.254:/root"
         sh "ssh -o StrictHostKeyChecking=no root@165.232.147.254 bash ./PM-deploy.sh ${deployTag}"
     }
 }
