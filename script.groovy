@@ -13,11 +13,17 @@ def increment(){
 
     echo "Major: ${major}, Minor: ${minor}, Patch: ${patch}"
     sh "bash ./test_build.sh ${major}.${minor}.${patch}"
-    
+    TAG = ${major}.${minor}.${patch}
 }
-
+ 
 def pushImage(){
-    
+    withCredentials([usernamePassword(credentialsId:'dockerhub-credentials', usernameVariable:'USER', passwordVariable:'PASS')]){
+        sh "echo ${PASS} | docker login --username ${USER} --password-stdin"
+        sh "docker -t pmapp-image:${TAG} ${env.REG}:${TAG}"
+        sh "docker -t pmui-image:${TAG} ${env.REG}:${TAG}"
+        sh "docker push ${env.REG}:${TAG}"
+        sh "docker push ${env.REG}:${TAG}"
+    }
 }
 
 def deploy(){

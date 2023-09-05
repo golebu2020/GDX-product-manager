@@ -2,12 +2,13 @@
 
 
 def gv
-def major, minor, patch
+def major, minor, patch, TAG
 
 pipeline{
     agent any
     environment{
         WORKSPACE=pwd()
+        REG = "golebu2023/image-registry"
     }
     
     stages{
