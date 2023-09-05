@@ -31,7 +31,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 8084:81
+      - 8084:80
     volumes:
       - pmui_vol:/code
 
