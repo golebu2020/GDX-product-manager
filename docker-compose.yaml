@@ -1,14 +1,14 @@
 version: '3.3'
 services:
   pmapp:
-    # image: "pmapp-image:${TAG}"
-    image: "pmapp-image:1.0.0"
+    image: "pmapp-image:${TAG}"
+    # image: "pmapp-image:1.0.0"
     container_name: "pmapp-container"
     build:
       context: .
       dockerfile: ./api/Dockerfile
     ports:
-      - 8083:8000
+      - 8081:8000
     volumes:
       - pmapp_vol:/app
     command: >
@@ -24,14 +24,14 @@ services:
       - pmdb
 
   pmui:
-    # image: "pmui-image:${TAG}"
-    image: "pmui-image:1.0.0"
+    image: "pmui-image:${TAG}"
+    # image: "pmui-image:1.0.0"
     container_name: "pmui-container"
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 8084:80
+      - 8082:80
     volumes:
       - pmui_vol:/code
 
