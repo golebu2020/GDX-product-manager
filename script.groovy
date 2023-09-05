@@ -13,7 +13,7 @@ def increment(){
 
     echo "Major: ${major}, Minor: ${minor}, Patch: ${patch}"
     sh "bash ./test_build.sh ${major}.${minor}.${patch}"
-    TAG = ${major}.${minor}.${patch}
+    TAG = "${major}.${minor}.${patch}"
 }
  
 def pushImage(){
