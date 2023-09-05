@@ -13,7 +13,7 @@ pipeline{
         WORKSPACE=pwd()
         REG = "golebu2023/image-registry"
         uiImage="pmui_image"
-        apiImage="pmapp_image"
+        apiImage="pmapi_image"
         REMOTE_ACCESS = "ssh -o StrictHostKeyChecking=no root@165.232.147.254"
     }
     

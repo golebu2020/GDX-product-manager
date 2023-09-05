@@ -23,7 +23,7 @@ def pushImage(){
         sh "docker tag ${env.apiImage}:latest ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.apiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.uiImage}-${TAG}"
-        sh "docker rmi -f pmapp_image:latest pmui_image:latest"
+        sh "docker rmi -f pmapi_image:latest pmui_image:latest"
         sh "docker rmi -f ${env.REG}:${env.apiImage}-${TAG}"
         sh "docker rmi -f ${env.REG}:${env.uiImage}-${TAG}"
     }
@@ -33,7 +33,6 @@ def deploy(){
     def deployTag = "${major}.${minor}.${patch}"
     def runApp = "bash ./PM-deploy.sh ${deployTag}"
     sshagent(['deploy-key']){
-        
         sh "scp -o StrictHostKeyChecking=no PM-deploy.sh PM-docker-compose-prod.yaml root@165.232.147.254:/root"
         sh "ssh -o StrictHostKeyChecking=no root@165.232.147.254 bash ./PM-deploy.sh ${deployTag}"
     }
