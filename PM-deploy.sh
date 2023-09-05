@@ -2,4 +2,5 @@
 
 export TAG=$1
 
-docker-compose -f PM-docker-compose-prod.yaml up -d
+docker-compose -f PM-docker-compose-prod.yaml up --build -d
+
