@@ -34,7 +34,7 @@ pipeline{
             steps{
                 script{
                     echo "Pushing image to registry..."
-                    // gv.pushImage()
+                    gv.pushImage()
 
                 }
             }
