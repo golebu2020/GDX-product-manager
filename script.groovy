@@ -23,7 +23,7 @@ def pushImage(){
         sh "docker tag ${env.apiImage}:latest ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.apiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.uiImage}-${TAG}"
-        sh "docker rmi -f pmapp_image:${TAG} pmui_image:latest"
+        sh "docker rmi -f pmapp_image:latest pmui_image:latest"
         sh "docker rmi -f ${env.REG}:${env.apiImage}-${TAG} ${env.REG}:${env.uiImage}-${TAG}"
     }
 }
