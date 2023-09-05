@@ -1,5 +1,5 @@
 # FROM node:14.17.3-buster as build
-FROM node:14-alpine as build
+FROM node:16.6.1 as build  
 
 WORKDIR /code
 
@@ -11,7 +11,7 @@ RUN npm run build
 # RUN npm install
 
 # NGINX Web server
-FROM nginx:1.12-alpine as prod
+FROM node:16.6.1 as prod
 
 COPY --from=build /code/build /usr/share/nginx/html
 
