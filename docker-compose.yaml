@@ -2,7 +2,6 @@ version: '3.9'
 services:
   pmapp:
     image: "pmapp-image:${TAG}"
-    container_name: "pmapp-container:${TAG}"
     build:
       context: .
       dockerfile: ./api/Dockerfile
@@ -24,7 +23,6 @@ services:
 
   pmui:
     image: "pmui-image:${TAG}"
-    container_name: "pmui-container:${TAG}"
     build:
       context: ./frontend
       dockerfile: Dockerfile
