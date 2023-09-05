@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   pmapp:
-    image: "pmapp-image:1.0.0"
+    image: "pmapp-image:${TAG}"
     container_name: "pmapp-container"
     build:
       context: .
@@ -15,7 +15,7 @@ services:
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST=db
+      - DB_HOST=pmdb
       - DB_USER=devuser
       - DB_PASSWORD=devpassword
       - DB_NAME=databasename
@@ -23,7 +23,7 @@ services:
       - pmdb
 
   pmui:
-    image: "pmui-image:1.0.0"
+    image: "pmui-image:${TAG}"
     container_name: "pmui-container"
     build:
       context: ./frontend
