@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./api/Dockerfile
     ports:
-      - 8081:8000
+      - 8083:8000
     volumes:
       - pmapp_vol:/app
     command: >
@@ -27,7 +27,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 8082:80
+      - 8084:80
     volumes:
       - pmui_vol:/app
 
