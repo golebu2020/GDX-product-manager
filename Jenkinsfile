@@ -9,6 +9,8 @@ pipeline{
     environment{
         WORKSPACE=pwd()
         REG = "golebu2023/image-registry"
+        uiImage="pmui-image"
+        apiImage="pmapp-image"
     }
     
     stages{
