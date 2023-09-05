@@ -31,7 +31,7 @@ def pushImage(){
 
 def deploy(){
     sshagent(['deploy-key']){
-        sh "scp -o StrictHostKeyCkecking=no PM=deploy.sh PM-docker-compose-prod.yaml root@165.232.147.254:/root"
+        sh "scp -o StrictHostKeyChecking=no PM=deploy.sh PM-docker-compose-prod.yaml root@165.232.147.254:/root"
     }
 
 }
