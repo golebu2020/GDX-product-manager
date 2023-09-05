@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  pmapp:
+    image: "golebu2023/image-registry:pmapi_image-${TAG}"
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    ports:
+      - 8083:8000
+    volumes:
+      - pmapp_vol:/app
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=pmdb
+      - DB_USER=devuser
+      - DB_PASSWORD=devpassword
+      - DB_NAME=databasename
+    depends_on:
+      - pmdb
+
+  pmui:
+    image: "golebu2023/image-registry:pmui_image-${TAG}"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8084:80
+    volumes:
+      - pmui_vol:/app
+
+  pmdb:
+    image: postgres:13-alpine
+    volumes:
+      - postgres-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=devpassword
+      - POSTGRES_DB=databasename
+
+volumes:
+  postgres-db-data:
+  pmapp_vol:
+  pmui_vol:
