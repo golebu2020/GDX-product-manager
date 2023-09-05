@@ -12,15 +12,15 @@ def increment(){
     patch = matcher[2]
 
     TAG = "${major}.${minor}.${patch}"
-    sh "bash ./test_build.sh ${TAG}"
+    sh "bash ./test_build.sh"
     
 }
  
 def pushImage(){
     withCredentials([usernamePassword(credentialsId:'dockerhub-credentials', usernameVariable:'USER', passwordVariable:'PASS')]){
         sh "echo ${PASS} | docker login --username ${USER} --password-stdin"
-        sh "docker tag pmapi-image:${TAG} ${env.REG}:${env.apiImage}-${TAG}"
-        sh "docker tag pmui-image:${TAG} ${env.REG}:${env.uiImage}-${TAG}"
+        sh "docker tag ${env.apiImage} ${env.REG}:${env.apiImage}-${TAG}"
+        sh "docker tag ${env.apiImage} ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.apiImage}-${TAG}"
         sh "docker push ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker image prune -a -f"
