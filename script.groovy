@@ -25,6 +25,7 @@ def pushImage(){
         sh "docker push ${env.REG}:${env.uiImage}-${TAG}"
         sh "docker rmi -f pmapp_image:latest pmui_image:latest"
         sh "docker rmi -f golebu2023/image-registry:pmapp_image-1.0.0 "
+        sh "docker rmi -f ${env.REG}:${env.uiImage}-${TAG}"
     }
 }
 
